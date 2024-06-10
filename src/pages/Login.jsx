@@ -14,7 +14,7 @@ const Login = () => {
   const handleLogin = () => {
     setLoading(true);
     axios
-      .post('http://localhost:5555/user/login', { username, password })
+      .post('http://128.140.42.236:5555/user/login', { username, password })
       .then(response => {
         setLoading(false);
         const { username } = response.data; // Extracting username from response data
