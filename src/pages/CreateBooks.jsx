@@ -25,7 +25,7 @@ const CreateBooks = () => {
 
     setLoading(true);
     try {
-      await axios.post('https://bookstoreback-omf3.onrender.com/books', formData, {
+      await axios.post('https://eliltatradingadmin.com/api/file/upload', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
