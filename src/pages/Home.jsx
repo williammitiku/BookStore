@@ -9,7 +9,7 @@ import BooksTable from '../components/home/BooksTable';
 import BooksCard from '../components/home/BooksCard';
 
 const Home = () => {
-  const usernameLocal = localStorage.getItem('user'); // Correctly referencing the key as a string
+  const usernameLocal = localStorage.getItem('user'); 
   console.log(usernameLocal, 'hollaa');
 
   const [books, setBooks] = useState([]);
@@ -19,7 +19,7 @@ const Home = () => {
 
   const handleLogOut = () => {
     localStorage.removeItem('token');
-    localStorage.removeItem('user'); // Optionally remove the user info from localStorage
+    localStorage.removeItem('user'); 
     navigate('/');
   };
 
