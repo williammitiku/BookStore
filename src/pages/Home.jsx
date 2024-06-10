@@ -8,12 +8,10 @@ import { MdOutlineAddBox, MdOutlineDelete } from 'react-icons/md';
 import BooksTable from '../components/home/BooksTable';
 import BooksCard from '../components/home/BooksCard';
 
-import { useLocation } from 'react-router-dom';
-
 const Home = () => {
+  const usernameLocal = localStorage.getItem('user'); // Correctly referencing the key as a string
+  console.log(usernameLocal, 'hollaa');
 
-  const location = useLocation();
-  const { username } = location.state;
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(false);
   const [showType, setShowType] = useState('table');
@@ -21,13 +19,14 @@ const Home = () => {
 
   const handleLogOut = () => {
     localStorage.removeItem('token');
+    localStorage.removeItem('user'); // Optionally remove the user info from localStorage
     navigate('/');
   };
 
   useEffect(() => {
     setLoading(true);
     axios
-      .get('https://bookstoreback-omf3.onrender.com/books')
+      .get('http://localhost:5555/books')
       .then((response) => {
         setBooks(response.data.data);
         setLoading(false);
@@ -60,7 +59,7 @@ const Home = () => {
           <Link to="/books/create" className="text-sky-800">
             <MdOutlineAddBox className="text-4xl" />
           </Link>
-          <span>Welcome, {username}!</span>
+          <span>Welcome, {usernameLocal}!</span>
           <button
             className="bg-red-500 hover:bg-red-700 text-white px-4 py-2 rounded-lg shadow-md transition-all duration-300 ease-in-out"
             onClick={handleLogOut}

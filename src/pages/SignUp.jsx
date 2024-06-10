@@ -15,7 +15,7 @@ const SignUp = () => {
   const handleSignUp = () => {
     setLoading(true);
     axios
-      .post('https://bookstoreback-omf3.onrender.com/user/signup', { username, email, password })
+      .post('http://localhost:5555/user/signup', { username, email, password })
       .then(() => {
         setLoading(false);
         enqueueSnackbar('Sign Up successful', { variant: 'success' });

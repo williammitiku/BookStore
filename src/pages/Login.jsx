@@ -14,12 +14,13 @@ const Login = () => {
   const handleLogin = () => {
     setLoading(true);
     axios
-      .post('https://bookstoreback-omf3.onrender.com/user/login', { username, password })
+      .post('http://localhost:5555/user/login', { username, password })
       .then(response => {
         setLoading(false);
         const { username } = response.data; // Extracting username from response data
         console.log('Username:', username);
         localStorage.setItem('token', response.data.token);
+        localStorage.setItem('user', response.data.username)
         enqueueSnackbar('Login successful', { variant: 'success' });
         navigate('/home', { state: { username } }); // Navigating to /home with username in state
       })
